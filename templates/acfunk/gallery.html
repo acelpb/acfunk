@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+pip {% load i18n %}
+
+{% block title %}{{ gallery.title }}{% endblock %}
+
+{% block content %}
+    <!-- Modal -->
+    <div class="modal fade" id="carrouselModal" tabindex="-1" role="dialog"
+         aria-labelledby="carrouselModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="height: 90vh;">
+                    <div id="carouselExampleControls" class="carousel slide h-100" data-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            {% for photo in gallery %}
+                                <div class="carousel-item h-100 {% if forloop.first %} active{% endif %}">
+                                    <img class="d-block h-100 w-100"
+                                         src="{{ photo.picture.url }}" alt="{{ photo.title }}"
+                                         style="max-height: 90vh; object-fit: contain;"
+                                    >
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row col justify-content-center">
+        <div class="col-lg-8">
+            <div class="row">
+                {% for photo in gallery %}
+                    <div class="col-sm-4 text-center" data-toggle="modal" data-target="#carrouselModal">
+                        <img class="d-block h-100 w-100 m-3 m-md-2 m-sm-1"
+                             data-target="#carouselExampleControls"
+                             data-slide-to="{{ forloop.counter0 }}"
+                             src="{{ photo.thumbnail.url }}"
+                             alt="{{ photo.title }}"
+                             style="object-fit: contain;"
+                        >
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
