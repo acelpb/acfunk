@@ -16,18 +16,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bb$z@reg$+e3c33+97-ygn!xxvjg*@8=ff5*omh&@l#_v!9+)h'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -174,3 +162,18 @@ BOOTSTRAP4 = {
     'include_jquery': 'slim',
     'set_placeholder': False,
 }
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    # Quick-start development settings - unsuitable for production
+    # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = 'bb$z@reg$+e3c33+97-ygn!xxvjg*@8=ff5*omh&@l#_v!9+)h'
+
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+
+    ALLOWED_HOSTS = []
