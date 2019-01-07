@@ -13,7 +13,7 @@ class EtudesView(TemplateView):
     def get_context_data(self, **kwargs):
         return {
             **super().get_context_data(**kwargs),
-            'gallery': Artwork.objects.filter(type=Artwork.ETUDE).all(),
+            'gallery': Artwork.objects.filter(type=Artwork.ETUDE).order_by('order').all(),
             'title': Artwork.TYPE_CHOICES[Artwork.ETUDE][1],
         }
 
@@ -24,7 +24,7 @@ class PaintingsView(TemplateView):
     def get_context_data(self, **kwargs):
         return {
             **super().get_context_data(**kwargs),
-            'gallery': Artwork.objects.filter(type=Artwork.PAINTING).all(),
+            'gallery': Artwork.objects.filter(type=Artwork.PAINTING).order_by('order').all(),
             'title': Artwork.TYPE_CHOICES[Artwork.PAINTING][1],
         }
 
@@ -35,7 +35,7 @@ class SketchesView(TemplateView):
     def get_context_data(self, **kwargs):
         return {
             **super().get_context_data(**kwargs),
-            'gallery': Artwork.objects.filter(type=Artwork.SKETCH).all(),
+            'gallery': Artwork.objects.filter(type=Artwork.SKETCH).order_by('order').all(),
             'title': Artwork.TYPE_CHOICES[Artwork.SKETCH][1],
         }
 

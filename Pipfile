@@ -12,6 +12,7 @@ whitenoise = {extras = ["brotli"],version = "*"}
 django-imagekit = "*"
 pillow = "*"
 gunicorn = "*"
+django-ordered-model = "*"
 
 [requires]
 python_version = "3.7"
