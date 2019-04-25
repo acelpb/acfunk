@@ -39,14 +39,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a href="{% url 'paintings' %}"
-                                            class="nav-link{% if request.resolver_match.url_name == 'paintings' %} active{% endif %}">Paintings</a>
+                    <li class="nav-item"><a href="{% url 'abstracts' %}"
+                                            class="nav-link{% if request.resolver_match.url_name == 'abstracts' %} active{% endif %}">Abstracts</a>
                     </li>
-                    <li class="nav-item"><a href="{% url 'etudes' %}"
-                                            class="nav-link{% if request.resolver_match.url_name == 'etudes' %} active{% endif %}">Etudes</a>
+                    <li class="nav-item"><a href="{% url 'impressions' %}"
+                                            class="nav-link{% if request.resolver_match.url_name == 'impressions' %} active{% endif %}">Impressions</a>
                     </li>
-                    <li class="nav-item"><a href="{% url 'sketches' %}"
-                                            class="nav-link{% if request.resolver_match.url_name == 'sketches' %} active{% endif %}">Sketches</a>
+                    <li class="nav-item"><a href="{% url 'birds' %}"
+                                            class="nav-link{% if request.resolver_match.url_name == 'birds' %} active{% endif %}">Birds</a>
+                    </li>
+                    <li class="nav-item"><a href="{% url 'portraits' %}"
+                                            class="nav-link{% if request.resolver_match.url_name == 'portraits' %} active{% endif %}">Portraits</a>
                     </li>
                     <li class="nav-item"><a href="{% url 'about' %}"
                                             class="nav-link{% if request.resolver_match.url_name == 'about' %} active{% endif %}">About</a>

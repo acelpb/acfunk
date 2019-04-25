@@ -6,13 +6,16 @@ from ordered_model.models import OrderedModel
 
 
 class Artwork(OrderedModel):
-    PAINTING = 0
-    ETUDE = 1
-    SKETCH = 2
+    ABSTRACTS = 0
+    IMPRESSIONS = 1
+    BIRDS = 2
+    PORTRAITS = 3
+
     TYPE_CHOICES = (
-        (PAINTING, 'Painting'),
-        (ETUDE, 'Étude'),
-        (SKETCH, 'Sketch'),
+        (ABSTRACTS, 'Abstracts'),
+        (IMPRESSIONS, 'Impressions'),
+        (BIRDS, 'Birds'),
+        (PORTRAITS, 'Portraits'),
     )
 
     picture = models.ImageField(upload_to='artwork')

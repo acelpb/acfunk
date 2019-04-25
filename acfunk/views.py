@@ -7,36 +7,47 @@ class HomeView(TemplateView):
     template_name = 'acfunk/home.html'
 
 
-class EtudesView(TemplateView):
+class AbstractsView(TemplateView):
     template_name = 'acfunk/gallery.html'
 
     def get_context_data(self, **kwargs):
         return {
             **super().get_context_data(**kwargs),
-            'gallery': Artwork.objects.filter(type=Artwork.ETUDE).order_by('order').all(),
-            'title': Artwork.TYPE_CHOICES[Artwork.ETUDE][1],
+            'gallery': Artwork.objects.filter(type=Artwork.ABSTRACTS).order_by('order').all(),
+            'title': Artwork.TYPE_CHOICES[Artwork.ABSTRACTS][1],
         }
 
 
-class PaintingsView(TemplateView):
+class ImpressionsView(TemplateView):
     template_name = 'acfunk/gallery.html'
 
     def get_context_data(self, **kwargs):
         return {
             **super().get_context_data(**kwargs),
-            'gallery': Artwork.objects.filter(type=Artwork.PAINTING).order_by('order').all(),
-            'title': Artwork.TYPE_CHOICES[Artwork.PAINTING][1],
+            'gallery': Artwork.objects.filter(type=Artwork.IMPRESSIONS).order_by('order').all(),
+            'title': Artwork.TYPE_CHOICES[Artwork.IMPRESSIONS][1],
         }
 
 
-class SketchesView(TemplateView):
+class BirdsView(TemplateView):
     template_name = 'acfunk/gallery.html'
 
     def get_context_data(self, **kwargs):
         return {
             **super().get_context_data(**kwargs),
-            'gallery': Artwork.objects.filter(type=Artwork.SKETCH).order_by('order').all(),
-            'title': Artwork.TYPE_CHOICES[Artwork.SKETCH][1],
+            'gallery': Artwork.objects.filter(type=Artwork.BIRDS).order_by('order').all(),
+            'title': Artwork.TYPE_CHOICES[Artwork.BIRDS][1],
+        }
+
+
+class PortraitsView(TemplateView):
+    template_name = 'acfunk/gallery.html'
+
+    def get_context_data(self, **kwargs):
+        return {
+            **super().get_context_data(**kwargs),
+            'gallery': Artwork.objects.filter(type=Artwork.PORTRAITS).order_by('order').all(),
+            'title': Artwork.TYPE_CHOICES[Artwork.PORTRAITS][1],
         }
 
 

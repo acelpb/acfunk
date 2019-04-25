@@ -13,22 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 # sitemaps.py
 from django.contrib import sitemaps
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 from django.urls import reverse
-from django.urls import include
-from django.conf.urls.static import static
-from django.conf import settings
 
-from .views import AboutView
+from .views import AboutView, AbstractsView, ImpressionsView, BirdsView, PortraitsView
 from .views import ContactView
-from .views import EtudesView
 from .views import HomeView
-from .views import PaintingsView
-from .views import SketchesView
 
 
 class StaticViewSitemap(sitemaps.Sitemap):
@@ -43,13 +39,14 @@ class StaticViewSitemap(sitemaps.Sitemap):
 
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
-    path('paintings/', PaintingsView.as_view(), name='paintings'),
-    path('etudes/', EtudesView.as_view(), name='etudes'),
-    path('sketches/', SketchesView.as_view(), name='sketches'),
-    path('about/', AboutView.as_view(), name='about'),
-    path('contact/', ContactView.as_view(), name='contact'),
-    path('admin/', admin.site.urls),
-    path('sitemap.xml', sitemap, {'sitemaps': {'static': StaticViewSitemap, }},
-         name='django.contrib.sitemaps.views.sitemap')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('', HomeView.as_view(), name='home'),
+                  path('abstracts/', AbstractsView.as_view(), name='abstracts'),
+                  path('impressions/', ImpressionsView.as_view(), name='impressions'),
+                  path('birds/', BirdsView.as_view(), name='birds'),
+                  path('portraits/', PortraitsView.as_view(), name='portraits'),
+                  path('about/', AboutView.as_view(), name='about'),
+                  path('contact/', ContactView.as_view(), name='contact'),
+                  path('admin/', admin.site.urls),
+                  path('sitemap.xml', sitemap, {'sitemaps': {'static': StaticViewSitemap, }},
+                       name='django.contrib.sitemaps.views.sitemap')
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
